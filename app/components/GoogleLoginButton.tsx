@@ -1,0 +1,25 @@
+"use client"
+
+import { supabase } from "@/lib/supabase/client"
+
+export default function GoogleLoginButton() {
+
+  async function signInWithGoogle() {
+
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: "https://jubilant-sniffle-54pgjxv4w9xf4q95-3000.app.github.dev"
+      }
+    })
+  }
+
+  return (
+    <button
+      onClick={signInWithGoogle}
+      className="bg-white border border-gray-300 px-6 py-3 rounded-full shadow hover:bg-gray-100 font-semibold"
+    >
+      Sign in with Google
+    </button>
+  )
+}
