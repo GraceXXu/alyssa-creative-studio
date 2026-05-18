@@ -13,6 +13,7 @@ export default function EditArtworkPage() {
   const [category, setCategory] = useState("LEGO")
   const [description, setDescription] = useState("")
   const [loading, setLoading] = useState(false)
+  const [aiLoading, setAiLoading] = useState(false)
   const [message, setMessage] = useState("")
 
   useEffect(() => {
@@ -35,6 +36,42 @@ export default function EditArtworkPage() {
 
     loadArtwork()
   }, [id])
+
+  async function generateDescription() {
+    if (!title || !category) {
+      setMessage("Please enter a title and category first.")
+      return
+    }
+
+    setAiLoading(true)
+    setMessage("")
+
+    try {
+      const response = await fetch("/api/generate-description", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title,
+          category,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (data.description) {
+        setDescription(data.description)
+        setMessage("AI description generated successfully!")
+      } else {
+        setMessage("AI generation failed.")
+      }
+    } catch (error) {
+      setMessage("Something went wrong.")
+    }
+
+    setAiLoading(false)
+  }
 
   async function handleUpdate(e: React.FormEvent) {
     e.preventDefault()
@@ -64,6 +101,7 @@ export default function EditArtworkPage() {
     }
 
     setLoading(false)
+
     router.push("/")
     router.refresh()
   }
@@ -76,14 +114,18 @@ export default function EditArtworkPage() {
         </h1>
 
         {message && (
-          <p className="text-sm text-red-600 font-semibold mb-4">
+          <p className="text-sm text-pink-600 font-semibold mb-4">
             {message}
           </p>
         )}
 
         <form onSubmit={handleUpdate} className="space-y-5">
+
           <div>
-            <label className="block font-semibold mb-2">Title</label>
+            <label className="block font-semibold mb-2">
+              Title
+            </label>
+
             <input
               className="w-full border rounded-lg p-3"
               value={title}
@@ -92,7 +134,10 @@ export default function EditArtworkPage() {
           </div>
 
           <div>
-            <label className="block font-semibold mb-2">Category</label>
+            <label className="block font-semibold mb-2">
+              Category
+            </label>
+
             <select
               className="w-full border rounded-lg p-3"
               value={category}
@@ -108,7 +153,10 @@ export default function EditArtworkPage() {
           </div>
 
           <div>
-            <label className="block font-semibold mb-2">Description</label>
+            <label className="block font-semibold mb-2">
+              Description
+            </label>
+
             <textarea
               className="w-full border rounded-lg p-3"
               rows={4}
@@ -116,6 +164,17 @@ export default function EditArtworkPage() {
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
+
+          <button
+            type="button"
+            onClick={generateDescription}
+            disabled={aiLoading}
+            className="w-full bg-purple-600 text-white font-bold py-3 rounded-lg hover:bg-purple-700 disabled:bg-gray-400"
+          >
+            {aiLoading
+              ? "Generating..."
+              : "Generate Description with AI"}
+          </button>
 
           <button
             type="submit"
@@ -132,6 +191,7 @@ export default function EditArtworkPage() {
           >
             Cancel
           </button>
+
         </form>
       </div>
     </main>

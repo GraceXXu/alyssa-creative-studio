@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { supabase } from "@/lib/supabase/client"
 import DeleteButton from "./components/DeleteButton"
 import GoogleLoginButton from "./components/GoogleLoginButton"
+import ExpandableText from "./components/ExpandableText"
 
 export default function Home() {
   const [artworks, setArtworks] = useState<any[]>([])
@@ -150,9 +151,7 @@ export default function Home() {
                   {artwork.category}
                 </p>
 
-                <p className="text-gray-600">
-                  {artwork.description}
-                </p>
+                <ExpandableText text={artwork.description} />
 
                 <a
                   href={`/edit/${artwork.id}`}
