@@ -1,36 +1,135 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Alyssa Creative Studio
 
-## Getting Started
+Alyssa Creative Studio is a creative portfolio web application where users can upload, edit, search, and manage children's artwork projects. The app includes Google authentication, AI-generated descriptions, email notifications, image uploads, and responsive design.
 
-First, run the development server:
+---
+
+## Live Demo
+
+Vercel Deployment URL:
+
+https://alyssa-creative-studio.vercel.app
+
+---
+
+## Features
+
+- Google OAuth Login with Supabase
+- Full CRUD Operations
+  - Create Artwork
+  - Read Artwork
+  - Update Artwork
+  - Delete Artwork
+- Image Upload with Supabase Storage
+- Search by title, category, or description
+- Category filter buttons
+- AI-generated artwork descriptions using DeepSeek API
+- Email notifications using Resend
+- Responsive mobile-friendly design
+- Expand / Collapse description display
+- Loading states and validation messages
+
+---
+
+## Tech Stack
+
+- Next.js 15
+- React
+- Tailwind CSS
+- Supabase
+- DeepSeek API
+- Resend Email API
+- Vercel Deployment
+- GitHub Codespaces
+
+---
+
+## Setup Instructions
+
+### 1. Clone the repository
+
+```bash
+git clone YOUR_GITHUB_REPOSITORY_URL
+```
+
+---
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+---
+
+### 3. Create environment variables
+
+Create a `.env.local` file and add:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+RESEND_API_KEY=your_resend_api_key
+DEEPSEEK_API_KEY=your_deepseek_api_key
+```
+
+---
+
+### 4. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Screenshots
 
-To learn more about Next.js, take a look at the following resources:
+### Home Page
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Add your screenshot here.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+![Home Page](public/screenshots/home.png)
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Add Artwork Page
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Add your screenshot here.
+
+![Add Artwork](public/screenshots/add.png)
+
+---
+
+### Edit Artwork Page
+
+Add your screenshot here.
+
+![Edit Artwork](public/screenshots/edit.png)
+
+---
+
+## Required Features Completed
+
+- Authentication with Google OAuth
+- Database with Supabase
+- Full CRUD operations
+- File upload and display
+- Search functionality
+- Email notification feature
+- AI integration through server-side API route
+- UX polish features
+- Responsive design
+- Live Vercel deployment
+
+---
+
+## Author
+
+Created by Xiaochen Xu for CIS-107 Final Project.
