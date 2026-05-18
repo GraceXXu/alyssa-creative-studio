@@ -49,7 +49,7 @@ https://alyssa-creative-studio.vercel.app
 ### 1. Clone the repository
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone https://github.com/GraceXXu/alyssa-creative-studio.git
 ```
 
 ---
@@ -93,23 +93,17 @@ http://localhost:3000
 
 ### Home Page
 
-Add your screenshot here.
-
 ![Home Page](public/screenshots/home.png)
 
 ---
 
 ### Add Artwork Page
 
-Add your screenshot here.
-
 ![Add Artwork](public/screenshots/add.png)
 
 ---
 
 ### Edit Artwork Page
-
-Add your screenshot here.
 
 ![Edit Artwork](public/screenshots/edit.png)
 
